@@ -44,8 +44,7 @@ void main() {
     });
 
     testWidgets('Returns default Value', (tester) async {
-      final returnValue = await HomeWidget.getWidgetData(defaultValue.key,
-          defaultValue: defaultValue.value);
+      final returnValue = await HomeWidget.getWidgetData(defaultValue.key, defaultValue: defaultValue.value);
 
       expect(returnValue, defaultValue.value);
     });
@@ -63,12 +62,10 @@ void main() {
     await HomeWidget.registerBackgroundCallback(backgroundCallback);
   });
 
-  testWidgets(
-      'Initially Launched completes and returns null if not launched from widget',
-      (tester) async {
+  testWidgets('Initially Launched completes and returns null if not launched from widget', (tester) async {
     final retrievedData = await HomeWidget.initiallyLaunchedFromHomeWidget();
     expect(retrievedData, isNull);
   });
 }
 
-void backgroundCallback(Uri uri) {}
+void backgroundCallback(Uri? uri) {}

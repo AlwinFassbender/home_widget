@@ -7,8 +7,7 @@ void main() {
 
   group('Need Group Id', () {
     testWidgets('Save Data needs GroupId', (tester) async {
-      expect(() async => await HomeWidget.saveWidgetData('AnyId', null),
-          throwsException);
+      expect(() async => await HomeWidget.saveWidgetData('AnyId', null), throwsException);
     });
   });
 
@@ -54,8 +53,7 @@ void main() {
       });
 
       testWidgets('Returns default Value', (tester) async {
-        final returnValue = await HomeWidget.getWidgetData(defaultValue.key,
-            defaultValue: defaultValue.value);
+        final returnValue = await HomeWidget.getWidgetData(defaultValue.key, defaultValue: defaultValue.value);
 
         expect(returnValue, defaultValue.value);
       });
@@ -71,21 +69,16 @@ void main() {
     });
 
     group('Initially Launched', () {
-      testWidgets(
-          'Initially Launched completes and returns null if not launched from widget',
-          (tester) async {
+      testWidgets('Initially Launched completes and returns null if not launched from widget', (tester) async {
         await HomeWidget.setAppGroupId('group.es.antonborri.integrationtest');
-        final retrievedData =
-            await HomeWidget.initiallyLaunchedFromHomeWidget();
+        final retrievedData = await HomeWidget.initiallyLaunchedFromHomeWidget();
         expect(retrievedData, isNull);
       });
 
-      group('Register Backgorund Callback', () {
-        testWidgets('RegisterBackgroundCallback completes without error',
-            (tester) async {
+      group('Register Background Callback', () {
+        testWidgets('RegisterBackgroundCallback completes without error', (tester) async {
           await HomeWidget.setAppGroupId('group.es.antonborri.integrationtest');
-          final registerCallbackResult =
-              await HomeWidget.registerBackgroundCallback(backgroundCallback);
+          final registerCallbackResult = await HomeWidget.registerBackgroundCallback(backgroundCallback);
           expect(registerCallbackResult, isNull);
         });
       });
@@ -93,4 +86,4 @@ void main() {
   });
 }
 
-void backgroundCallback(Uri uri) {}
+void backgroundCallback(Uri? uri) {}
